@@ -2,9 +2,23 @@
 layout: default
 title: Hello world
 ---
-<div class="w-screen h-screen flex items-center justify-center bg-orange-100 font-mono">
-  <h1 class="text-indigo-800 font-semibold">
-    Hello world 👋<br/>from “{{site.name}}”
-  </h1>
-  <img class="w-20" src="/assets/images/eleventy_logo.png" alt="The possum is Eleventy’s mascot"/>
+<div class="w-full h-full flex flex-col items-center justify-center font-mono">
+  <div class="flex items-center justify-center">
+    <h1 class="text-indigo-800 font-semibold">
+      Hello world 👋<br/>from “{{site.name}}”
+    </h1>
+    <img class="w-20" src="/assets/images/eleventy_logo.png" alt="The possum is Eleventy’s mascot"/>
+  </div>
+
+  <div class="mt-10">
+    <ul class="list-disc">
+      {%- for post in collections.post -%}
+      <li>
+        <a class="text-blue-600 underline" href="{{ post.url }}">
+          {{ post.data.title }}
+        </a>
+      </li>
+      {%- endfor -%}
+    </ul>
+  </div>
 </div>
