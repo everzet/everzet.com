@@ -1,8 +1,8 @@
 ---
-tags: post
-layout: post
 title: First blog post
 date: 2020-11-01
+tags: post
+layout: post-layout
 ---
 # Garlic bread with cheese: What the science tells us
 
