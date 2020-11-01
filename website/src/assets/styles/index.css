@@ -1,22 +1,5 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  font-family: 'Courier New', Courier, monospace;
-}
+@import "tailwindcss/base";
 
-body {
-  background-color: antiquewhite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@import "tailwindcss/components";
 
-h1 {
-  color: darkslateblue;
-}
-
-img {
-  width: 15vw;
-  max-width: 6.25rem;
-}
+@import "tailwindcss/utilities";

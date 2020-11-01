@@ -1,5 +1,6 @@
 const path = require('path');
 const PostCSSPresetEnv = require('postcss-preset-env');
+const TailwindCSSPlugin = require('tailwindcss');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -54,7 +55,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [PostCSSPresetEnv],
+              plugins: () => [TailwindCSSPlugin, PostCSSPresetEnv],
               // Does not respect devtools option
               sourceMap: true
             }
