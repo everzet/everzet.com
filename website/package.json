@@ -1,4 +1,6 @@
 {
+  "name": "website",
+  "version": "0.0.1",
   "scripts": {
     "start": "cross-env NODE_ENV=development run-p -l start:*",
     "start:webpack": "webpack",
