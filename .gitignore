@@ -1,6 +1,9 @@
 # AWS SAM cache
 .aws-sam
 
+# direnv config (local envars)
+.envrc
+
 # Created by https://www.gitignore.io/api/osx,node,linux,windows
 
 ### Linux ###

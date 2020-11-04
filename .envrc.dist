@@ -1,0 +1,19 @@
+# This is example file.
+# Duplicate it into the same folder as `.envrc` and populate it with the actual values.
+#
+# `.envrc` is ignored by git (is in `./.gitignore`), but `.envrc.dist` is not!!!
+#
+# Use https://direnv.net to automatically load and unload your `.envrc` on dir change.
+
+# Local AWS profile (as defined in ~/.aws/credentials)
+export AWS_PROFILE=default
+
+# AWS region to deploy stack to
+export AWS_REGION=eu-east-1
+
+# Name of the CloudFormation stack to create and update
+export CF_STACK=
+
+# Name and prefix of the S3 bucket to use for storage of build artifacts
+export S3_BUILD_BUCKET=
+export S3_BUILD_PREFIX=
