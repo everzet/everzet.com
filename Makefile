@@ -3,6 +3,10 @@
 install:
 	@echo "[website] installing dependecies"
 	npm --prefix website install
+	
+start:
+	@echo "[website] starting local env"
+	@npm --prefix website run start
 
 build:
 	@if [ -z "${AWS_PROFILE}" ]; then echo "AWS_PROFILE must be set to your local AWS profile"; false; fi
