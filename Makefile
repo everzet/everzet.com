@@ -1,31 +1,24 @@
-.PHONY: clean build
+.PHONY: start-website deploy
 
-install:
-	@echo "[website] installing dependecies"
-	npm --prefix website install
-
-build:
-	@if [ -z "${AWS_PROFILE}" ]; then echo "AWS_PROFILE must be set to your local AWS profile"; false; fi
-	@if [ -z "${AWS_REGION}" ]; then echo "AWS_REGION must be set to AWS region you want to deploy to"; false; fi
-
+website/package-lock.json: website/package.json
+	@echo "[website] updating dependencies"
+	@npm --prefix website install
+website/node_modules: website/package-lock.json
+	@echo "[website] installing dependencies"
+	@npm --prefix website ci
+website/dist: website/node_modules website/src
 	@echo "[website] building distribution"
 	@npm --prefix website run build
+start-website: website/node_modules
+	@echo "[website] starting app locally on port 3000"
+	@npm --prefix website start
 
-	@echo "[website] adding manifest for AWS SAM"
+.aws-sam/build: website/dist
+	@echo "[website] adding empty AWS SAM manifest to the distribution"
 	@touch website/dist/requirements.txt
-
-	@echo "[website] building AWS SAM package locally"
+	@echo "[aws] creating CloudFormation package"
 	@sam build --profile ${AWS_PROFILE} --region ${AWS_REGION}
 
-deploy:
-	@if [ -z "${AWS_PROFILE}" ]; then echo "AWS_PROFILE must be set to your local AWS profile"; false; fi
-	@if [ -z "${AWS_REGION}" ]; then echo "AWS_REGION must be set to AWS region you want to deploy to"; false; fi
-	@if [ -z "${CF_STACK}" ]; then echo "CF_STACK must be set to CloudFormation stack name you want to deploy to"; false; fi
-	@if [ -z "${S3_BUILD_BUCKET}" ]; then echo "S3_BUILD_BUCKET must be set to S3 bucket you want your build packages to be uploaded to"; false; fi
-	@if [ -z "${S3_BUILD_PREFIX}" ]; then echo "S3_BUILD_PREFIX must be set to S3 prefix (folder) you want your build packages to be uploaded to"; false; fi
-
-	@echo "[website] deploying locally built package"
-	@sam deploy  --profile ${AWS_PROFILE} --region ${AWS_REGION} --stack-name ${CF_STACK} --s3-bucket ${S3_BUILD_BUCKET} --s3-prefix ${S3_BUILD_PREFIX} --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
-
-	@echo "[website] printing stack outputs"
-	@aws cloudformation describe-stacks --profile ${AWS_PROFILE} --region ${AWS_REGION} --stack-name ${CF_STACK} --query Stacks[].Outputs --output text
+deploy: .aws-sam/build
+	@echo "[aws] deploying CloudFormation package"
+	@sam deploy --profile ${AWS_PROFILE} --region ${AWS_REGION} --stack-name ${CF_STACK} --s3-bucket ${S3_BUILD_BUCKET} --s3-prefix ${S3_BUILD_PREFIX} --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
