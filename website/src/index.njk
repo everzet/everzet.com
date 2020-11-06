@@ -12,7 +12,7 @@ layout: page-layout
 
   <div class="mt-10">
     <ul class="list-disc">
-      {%- for post in collections.post -%}
+      {%- for post in collections.post | reverse -%}
       <li>
         <a class="text-blue-600 underline" href="{{ post.url }}">
           {{ post.data.title }}
