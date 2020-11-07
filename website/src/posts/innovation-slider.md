@@ -5,6 +5,7 @@ tags: [post, stakeholder-whisperer, migrated]
 layout: post-layout
 original: https://stakeholderwhisperer.com/posts/2016/1/innovation-slider
 ---
+
 # The Innovation Slider
 
 ## Balance innovation and predictability with the Innovation Slider

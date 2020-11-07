@@ -5,6 +5,7 @@ tags: [post, stakeholder-whisperer, migrated]
 layout: post-layout
 original: https://stakeholderwhisperer.com/posts/2015/1/economy-of-tests
 ---
+
 # Economy of Tests
 
 ![Snow Geese Migration](http://verraes.net/img/posts/2015-01-05-economy-of-tests/Snow_Geese_Migration.jpg)
