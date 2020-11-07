@@ -1,9 +1,10 @@
 ---
 title: Maximum Feasible Miracle
 date: 2019-06-26
-tags: [post, stakeholder-whisperer, migrated]
+tags: [post, product]
 layout: post-layout
-original: https://stakeholderwhisperer.com/posts/2019/6/maximum-feasible-miracle
+
+permalink: posts/2019/6/maximum-feasible-miracle/index.html
 ---
 
 # Maximum Feasible Miracle

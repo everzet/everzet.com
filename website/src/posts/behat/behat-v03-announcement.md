@@ -1,9 +1,10 @@
 ---
 title: Behat 0.3
 date: 2010-11-02
-tags: [post, news, tech, migrated]
+tags: [post, tech, php, behat]
 layout: post-layout
-original: https://everzet.com/post/1461842003/behat-v03
+
+permalink: post/1461842003/behat-v03/index.html
 ---
 
 # Behat v0.3

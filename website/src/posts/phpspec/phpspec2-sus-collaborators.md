@@ -1,9 +1,10 @@
 ---
 title: phpspec2 SUS and collaborators
 date: 2012-10-08
-tags: [post, tech, php, migrated]
+tags: [post, tech, php, phpspec]
 layout: post-layout
-original: https://everzet.com/post/33178339051/sus-collaborators
+
+permalink: post/33178339051/sus-collaborators/index.html
 ---
 
 # phpspec2: SUS and collaborators

@@ -1,9 +1,10 @@
 ---
 title: Fullstack BDD wrap up
 date: 2012-09-15
-tags: [post, news, migrated]
+tags: [post, tech, php, phpspec]
 layout: post-layout
-original: https://everzet.com/post/31581124270/fullstack-bdd-2012-wrapup
+
+permalink: post/31581124270/fullstack-bdd-2012-wrapup/index.html
 ---
 
 # Fullstack BDD wrap up

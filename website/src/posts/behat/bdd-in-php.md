@@ -1,9 +1,10 @@
 ---
 title: BDD in PHP
 date: 2010-09-10
-tags: [post, news, tech, migrated]
+tags: [post, tech, php, behat]
 layout: post-layout
-original: https://everzet.com/post/1096996491/bdd-in-php-or-just-be-hat
+
+permalink: "post/1096996491/bdd-in-php-or-just-be-hat/index.html"
 ---
 
 # BDD in PHP or “Just Be Hat”

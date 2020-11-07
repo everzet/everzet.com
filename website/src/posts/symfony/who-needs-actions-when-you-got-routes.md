@@ -1,9 +1,10 @@
 ---
 title: Who Needs Actions When You Got Routes
 date: 2010-11-11
-tags: [post, tech, migrated]
+tags: [post, tech, php, symfony]
 layout: post-layout
-original: https://everzet.com/post/1542206325/who-needs-actions-when-you-got-routes
+
+permalink: post/1542206325/who-needs-actions-when-you-got-routes/index.html
 ---
 
 # Who Needs Actions When You Got Routes

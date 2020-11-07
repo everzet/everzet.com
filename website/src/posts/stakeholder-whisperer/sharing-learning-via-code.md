@@ -1,9 +1,10 @@
 ---
 title: Sharing Learning via Code
 date: 2019-06-07
-tags: [post, stakeholder-whisperer, migrated]
+tags: [post, product]
 layout: post-layout
-original: https://stakeholderwhisperer.com/posts/2019/6/sharing-learning-via-code
+
+permalink: posts/2019/6/sharing-learning-via-code/index.html
 ---
 
 # Sharing Learning via Code

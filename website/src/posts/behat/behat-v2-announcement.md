@@ -1,9 +1,10 @@
 ---
 title: Behat 2.0
 date: 2011-06-20
-tags: [post, news, tech, migrated]
+tags: [post, tech, php, behat]
 layout: post-layout
-original: https://everzet.com/post/6719826499/behat-v2-announce
+
+permalink: post/6719826499/behat-v2-announce/index.html
 ---
 
 # Behat v2: The OOP powa!

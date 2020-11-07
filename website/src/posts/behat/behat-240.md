@@ -1,9 +1,10 @@
 ---
 title: Behat 2.4
 date: 2012-05-12
-tags: [post, news, tech, migrated]
+tags: [post, tech, php, behat]
 layout: post-layout
-original: https://everzet.com/post/22899229502/behat-240
+
+permalink: post/22899229502/behat-240/index.html
 ---
 
 # Behat 2.4: The most extendable testing framework

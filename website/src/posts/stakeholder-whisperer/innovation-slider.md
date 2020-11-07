@@ -1,9 +1,10 @@
 ---
 title: The Innovation Slider
 date: 2016-01-06
-tags: [post, stakeholder-whisperer, migrated]
+tags: [post, product]
 layout: post-layout
-original: https://stakeholderwhisperer.com/posts/2016/1/innovation-slider
+
+permalink: posts/2016/1/innovation-slider/index.html
 ---
 
 # The Innovation Slider

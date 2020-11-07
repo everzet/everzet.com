@@ -1,9 +1,10 @@
 ---
 title: Conceptual difference between Mockery and Prophecy
 date: 2014-01-11
-tags: [post, technical, php, migrated]
+tags: [post, tech, php, phpspec]
 layout: post-layout
-original: https://everzet.com/post/72910908762/conceptual-difference-between-mockery-and-prophecy
+
+permalink: post/72910908762/conceptual-difference-between-mockery-and-prophecy/index.html
 ---
 
 # Conceptual difference between Mockery and Prophecy

@@ -1,9 +1,10 @@
 ---
 title: With B for 3
 date: 2013-06-30
-tags: [post, news, migrated]
+tags: [post, tech, php, behat]
 layout: post-layout
-original: https://everzet.com/post/54277235902/with-b-for-3
+
+permalink: post/54277235902/with-b-for-3/index.html
 ---
 
 # With B for 3

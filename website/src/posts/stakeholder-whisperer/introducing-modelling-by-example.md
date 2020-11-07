@@ -1,9 +1,10 @@
 ---
 title: Introducing Modelling by Example
 date: 2014-10-03
-tags: [post, stakeholder-whisperer, migrated]
+tags: [post, product]
 layout: post-layout
-original: https://stakeholderwhisperer.com/posts/2014/10/introducing-modelling-by-example
+
+permalink: posts/2014/10/introducing-modelling-by-example/index.html
 ---
 
 # Introducing Modelling by Example

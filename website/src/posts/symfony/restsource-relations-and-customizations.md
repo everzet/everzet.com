@@ -1,9 +1,10 @@
 ---
 title: RESTource relations and customizations
 date: 2010-11-15
-tags: [post, tech, migrated]
+tags: [post, tech, php, symfony]
 layout: post-layout
-original: https://everzet.com/post/1581698750/restource-relations-and-customizations
+
+permalink: post/1581698750/restource-relations-and-customizations/index.html
 ---
 
 # RESTource relations and customizations

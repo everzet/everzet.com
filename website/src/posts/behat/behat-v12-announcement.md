@@ -1,9 +1,10 @@
 ---
 title: Behat 1.2
 date: 2011-06-13
-tags: [post, news, tech, migrated]
+tags: [post, tech, php, behat]
 layout: post-layout
-original: https://everzet.com/post/6487273052/behat-v12-poll
+
+permalink: post/6487273052/behat-v12-poll/index.html
 ---
 
 # Behat: Bye-bye ninja-style Ruby, hello oop-style PHP?
