@@ -1,8 +1,9 @@
 ---
 title: Impactful Reports
 date: 2019-06-13
-tags: [post, stakeholder-whisperer]
+tags: [post, stakeholder-whisperer, migrated]
 layout: post-layout
+original: https://stakeholderwhisperer.com/posts/2019/6/impactful-reports
 ---
 
 # Impactful Reports

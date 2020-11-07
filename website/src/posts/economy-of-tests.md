@@ -1,8 +1,9 @@
 ---
 title: Economy of Tests
 date: 2015-01-05
-tags: [post, stakeholder-whisperer]
+tags: [post, stakeholder-whisperer, migrated]
 layout: post-layout
+original: https://stakeholderwhisperer.com/posts/2015/1/economy-of-tests
 ---
 # Economy of Tests
 
