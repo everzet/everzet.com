@@ -3,15 +3,16 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   Application superstack
 
-Globals:
-  Function:
-    Timeout: 3
-
 Resources:
-  WebsiteLayer:
+  Website:
     Type: AWS::Serverless::Application
     Properties:
       Location: website/template.yaml
+
+  WebApi:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: webapi/template.yaml
 
   CDN:
     Type: AWS::CloudFront::Distribution
@@ -20,15 +21,30 @@ Resources:
         Enabled: true
         PriceClass: PriceClass_100
         DefaultCacheBehavior:
-          ForwardedValues:
-            QueryString: true
           TargetOriginId: website
           ViewerProtocolPolicy: redirect-to-https
+          ForwardedValues:
+            QueryString: true
+        CacheBehaviors:
+          - TargetOriginId: webapi
+            PathPattern: "/api/*"
+            ViewerProtocolPolicy: https-only
+            Compress: true
+            AllowedMethods: [DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT]
+            CachedMethods: [GET, HEAD, OPTIONS]
+            ForwardedValues:
+              QueryString: true
+              Headers: [Accept, Referer, Authorization, Content-Type]
         Origins:
           - Id: website
-            DomainName: !GetAtt WebsiteLayer.Outputs.WebsiteDomainName
+            DomainName: !GetAtt Website.Outputs.WebsiteDomainName
             CustomOriginConfig:
               OriginProtocolPolicy: http-only
+          - Id: webapi
+            DomainName: !GetAtt WebApi.Outputs.WebApiDomainName
+            OriginPath: !Sub "/${WebApi.Outputs.WebApiStage}"
+            CustomOriginConfig:
+              OriginProtocolPolicy: https-only
 
 Outputs:
   MainURL:

@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Serverless API
+
+Globals:
+  Function:
+    Timeout: 3
+
+Parameters:
+  AppStage:
+    Type: String
+    Default: api
+    Description: API Gateway stage, used as a prefix for the endpoint URLs
+    AllowedPattern: ^[A-Za-z]+$
+    MinLength: 1
+    MaxLength: 10
+    ConstraintDescription: "1-10 Latin letters"
+
+Resources:
+  WebApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref AppStage
+
+  GenerateSubmitTokenFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: contact-form/
+      Handler: generate-submit-token.lambdaHandler
+      Runtime: nodejs12.x
+      AutoPublishAlias: live
+      Events:
+        GenerateSubmitToken:
+          Type: Api
+          Properties:
+            RestApiId: !Ref WebApi
+            Method: get
+            Path: /api/contact-form/generate-token
+
+Outputs:
+  WebApiStage:
+    Description: "API Gateway stage"
+    Value: !Ref AppStage
+  WebApiURL:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${WebApi}.execute-api.${AWS::Region}.amazonaws.com/${AppStage}/"
+  WebApiDomainName:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "${WebApi}.execute-api.${AWS::Region}.amazonaws.com"
