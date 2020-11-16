@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Static website
+
+Resources:
+  DeploymentLayer:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location:
+        ApplicationId: arn:aws:serverlessrepo:us-east-1:375983427419:applications/deploy-to-s3
+        SemanticVersion: 2.4.2
+
+  WebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      WebsiteConfiguration:
+        IndexDocument: index.html
+
+  DummyFunctionWithWebsiteSource:
+    Type: AWS::Serverless::Function
+    Properties:
+      Layers:
+        - !GetAtt DeploymentLayer.Outputs.Arn
+      CodeUri: dist/
+      Runtime: python3.8
+      Handler: deployer.resource_handler
+      Timeout: 600
+      AutoPublishAlias: live
+      Policies:
+        - S3FullAccessPolicy:
+            BucketName: !Ref WebsiteBucket
+
+  WebsiteDeployment:
+    Type: AWS::CloudFormation::CustomResource
+    Properties:
+      ServiceToken: !GetAtt DummyFunctionWithWebsiteSource.Arn
+      Version: !Ref DummyFunctionWithWebsiteSource.Version
+      TargetBucket: !Ref WebsiteBucket
+      Acl: 'public-read'
+      CacheControlMaxAge: 600
+
+Outputs:
+  WebsiteBucket:
+    Description: "Website bucket"
+    Value: !Ref WebsiteBucket
+  WebsiteURL:
+    Description: "Website bucket URL"
+    Value: !GetAtt WebsiteBucket.WebsiteURL
