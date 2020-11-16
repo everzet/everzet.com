@@ -1,4 +1,4 @@
-.PHONY: start-website deploy
+.PHONY: start-website clean deploy
 
 website/package-lock.json: website/package.json
 	@echo "[website] updating dependencies"
@@ -18,6 +18,10 @@ start-website: website/node_modules
 	@touch website/dist/requirements.txt
 	@echo "[aws] creating CloudFormation package"
 	@sam build --profile ${AWS_PROFILE} --region ${AWS_REGION}
+
+clean:
+	@echo "[aws] cleaning local build cache"
+	@rm -rf .aws-sam/
 
 deploy: .aws-sam/build
 	@echo "[aws] deploying CloudFormation package"
