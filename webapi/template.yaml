@@ -23,20 +23,34 @@ Resources:
     Properties:
       StageName: !Ref AppStage
 
-  GenerateSubmitTokenFunction:
+  ContactsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  SubmitContactFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: contact-form/
-      Handler: generate-submit-token.lambdaHandler
+      CodeUri: contacts/
+      Handler: submit.lambdaHandler
       Runtime: nodejs12.x
       AutoPublishAlias: live
+      Environment:
+        Variables:
+          CONTACTS_S3_BUCKET: !Ref ContactsBucket
+      Policies:
+        - S3FullAccessPolicy:
+            BucketName: !Ref ContactsBucket
       Events:
-        GenerateSubmitToken:
+        SubmitContact:
           Type: Api
           Properties:
             RestApiId: !Ref WebApi
-            Method: get
-            Path: /api/contact-form/generate-token
+            Method: post
+            Path: /api/contacts
 
 Outputs:
   WebApiStage:
@@ -48,3 +62,6 @@ Outputs:
   WebApiDomainName:
     Description: "API Gateway endpoint URL"
     Value: !Sub "${WebApi}.execute-api.${AWS::Region}.amazonaws.com"
+  ContactsBucket:
+    Description: "S3 Bucket storing submitted contact details"
+    Value: !Ref ContactsBucket
