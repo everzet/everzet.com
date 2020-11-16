@@ -13,7 +13,24 @@ Resources:
     Properties:
       Location: website/template.yaml
 
+  CDN:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        PriceClass: PriceClass_100
+        DefaultCacheBehavior:
+          ForwardedValues:
+            QueryString: true
+          TargetOriginId: website
+          ViewerProtocolPolicy: redirect-to-https
+        Origins:
+          - Id: website
+            DomainName: !GetAtt WebsiteLayer.Outputs.WebsiteDomainName
+            CustomOriginConfig:
+              OriginProtocolPolicy: http-only
+
 Outputs:
-  WebsiteURL:
-    Description: "Static website URL"
-    Value: !GetAtt WebsiteLayer.Outputs.WebsiteURL
+  MainURL:
+    Description: "Main URL of the website and API (CDN)"
+    Value: !Sub "https://${CDN.DomainName}"

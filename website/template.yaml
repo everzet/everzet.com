@@ -41,9 +41,15 @@ Resources:
       CacheControlMaxAge: 600
 
 Outputs:
-  WebsiteBucket:
-    Description: "Website bucket"
+  Bucket:
+    Description: "Bucket"
     Value: !Ref WebsiteBucket
+  BucketDomainName:
+    Description: "Bucket's domain name"
+    Value: !GetAtt WebsiteBucket.DomainName
   WebsiteURL:
-    Description: "Website bucket URL"
+    Description: "Bucket's website URL"
     Value: !GetAtt WebsiteBucket.WebsiteURL
+  WebsiteDomainName:
+    Description: "Bucket's website domain name"
+    Value: !Join ["", !Split ["http://", !GetAtt WebsiteBucket.WebsiteURL]]
